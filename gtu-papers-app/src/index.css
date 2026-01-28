@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Neumorphism Palette */
+  --bg-primary: #ebecf0;
+  --bg-card: #ebecf0;
+
+  /* Text */
+  --text-primary: #4e5564;
+  --text-secondary: #7b8191;
+  --text-muted: #a0a5b8;
+
+  /* Accents */
+  --primary: #4a5fc1;
+  /* Slightly darker indigo for better contrast on light bg */
+  --primary-light: #6377e6;
+  --secondary: #6c757d;
+
+  /* Shadows - The Soul of Neumorphism */
+  --shadow-light: -5px -5px 10px #ffffff, 5px 5px 10px #babecc;
+  --shadow-pressed: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
+  --shadow-flat: 5px 5px 10px #babecc, -5px -5px 10px #ffffff;
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3c7d6;
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a6abc2;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}

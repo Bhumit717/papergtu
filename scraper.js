@@ -53,12 +53,12 @@ class GTUPaperScraper {
                 if (parts.length >= 5) {
                     const branchCode = parts[parts.length - 1];
                     let branchName = $(elem).text().trim();
-                    
+
                     // Clean up branch name
                     branchName = branchName.replace(/^\d+\s*/, '');
                     branchName = branchName.replace(/GTU BE\s*/g, '');
                     branchName = branchName.replace(/\s*Papers$/g, '');
-                    
+
                     if (branchCode && branchName && !seen.has(branchCode)) {
                         seen.add(branchCode);
                         branches.push({
@@ -111,11 +111,11 @@ class GTUPaperScraper {
                 const parts = href.replace(/\/$/, '').split('/');
                 const subjectCode = parts[parts.length - 1];
                 let subjectName = $(elem).text().trim();
-                
+
                 // Clean up subject name
                 subjectName = subjectName.replace(/^\d+\s*[/-]\s*/, '');
                 subjectName = subjectName.replace(/\s*Papers$/g, '');
-                
+
                 if (subjectCode && subjectName && !seen.has(subjectCode)) {
                     seen.add(subjectCode);
                     subjects.push({

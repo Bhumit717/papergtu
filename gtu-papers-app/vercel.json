@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/papers/:path*",
+            "destination": "https://raw.githubusercontent.com/Bhumit717/gtu-papers-data/main/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
