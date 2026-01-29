@@ -1,12 +1,14 @@
 {
-    "rewrites": [
+    "redirects": [
         {
             "source": "/papers/:path*",
-            "destination": "https://github.com/Bhumit717/papergtu/raw/main/papers/:path*"
+            "destination": "https://github.com/Bhumit717/papergtu/raw/main/papers/:path*",
+            "permanent": false
         },
         {
             "source": "/(.*)",
-            "destination": "/index.html"
+            "destination": "/index.html",
+            "permanent": false
         }
     ]
 }
