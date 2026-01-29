@@ -1,6 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useLocation } from 'react-router-dom';
 import './App.css';
+
+// --- SEO Hook ---
+function useSEO({ title, description }) {
+  useEffect(() => {
+    if (title) {
+      document.title = `${title} | GTU Papers Archive`;
+    }
+
+    if (description) {
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', description);
+      }
+    }
+  }, [title, description]);
+}
 
 function App() {
   const [metadata, setMetadata] = useState(null);
@@ -99,6 +115,11 @@ function Breadcrumbs() {
 function Home({ metadata }) {
   const branches = metadata?.branches || [];
 
+  useSEO({
+    title: 'Home',
+    description: 'Browse and download GTU BE previous year question papers for all engineering branches including Computer, Mechanical, Civil, Electrical, and more.'
+  });
+
   return (
     <div className="neu-card">
       <h2>Select Branch</h2>
@@ -116,7 +137,13 @@ function Home({ metadata }) {
 
 function BranchView({ metadata }) {
   const { branchName } = useParams();
-  const branch = metadata.branches.find(b => b.name === decodeURIComponent(branchName));
+  const decodedBranch = decodeURIComponent(branchName);
+  const branch = metadata.branches.find(b => b.name === decodedBranch);
+
+  useSEO({
+    title: decodedBranch,
+    description: `Download GTU BE question papers for ${decodedBranch}. Access all semesters and subjects for ${decodedBranch} engineering.`
+  });
 
   if (!branch) return <div className="empty-state">Branch not found</div>;
 
@@ -143,6 +170,11 @@ function SemesterView({ metadata }) {
   const { branchName, semName } = useParams();
   const decodedBranch = decodeURIComponent(branchName);
   const decodedSem = decodeURIComponent(semName);
+
+  useSEO({
+    title: `${decodedSem} - ${decodedBranch}`,
+    description: `Download GTU BE ${decodedSem} question papers for ${decodedBranch} engineering. Organized subject-wise for easy access.`
+  });
 
   const branch = metadata.branches.find(b => b.name === decodedBranch);
 
@@ -182,6 +214,11 @@ function SubjectView({ metadata }) {
   const decodedBranch = decodeURIComponent(branchName);
   const decodedSem = decodeURIComponent(semName);
   const decodedSubject = decodeURIComponent(subjectName);
+
+  useSEO({
+    title: `${decodedSubject} (${decodedSem})`,
+    description: `Download GTU BE ${decodedSubject} question papers for ${decodedBranch} ${decodedSem}. Direct links to previous year papers.`
+  });
 
   const branch = metadata.branches.find(b => b.name === decodedBranch);
   let semester = null;
