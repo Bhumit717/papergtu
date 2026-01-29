@@ -75,8 +75,8 @@ function Header() {
       <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '10px' }}>
         <p style={{ margin: 0 }}>Browse and download GTU BE examination papers</p>
         <span className="live-badge" style={{
-          padding: '2px 10px',
-          borderRadius: '12px',
+          padding: '2px 12px',
+          borderRadius: '50px',
           fontSize: '0.75rem',
           fontWeight: 'bold',
           display: 'flex',
