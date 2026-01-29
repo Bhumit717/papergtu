@@ -1,12 +1,11 @@
 {
+    "buildCommand": "cd gtu-papers-app && npm install && npm run build",
+    "outputDirectory": "gtu-papers-app/dist",
+    "framework": "vite",
     "rewrites": [
         {
             "source": "/papers/:path*",
             "destination": "https://raw.githubusercontent.com/Bhumit717/papergtu/main/papers/:path*"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
         }
     ]
 }
