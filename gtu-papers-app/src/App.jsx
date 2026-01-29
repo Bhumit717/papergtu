@@ -203,7 +203,7 @@ function SubjectView({ metadata }) {
   const handleView = (paper) => {
     // Construct the GitHub raw URL directly using the relative path structure
     // paper.localPath is something like "01/1/3110001/Summer_2025.pdf"
-    // We need: https://github.com/Bhumit717/papergtu/raw/main/papers/01/1/3110001/Summer_2025.pdf
+    // We need: https://github.com/Bhumit717/papergtu/blob/main/papers/01/1/3110001/Summer_2025.pdf
 
     let path = paper.localPath;
     if (path) {
