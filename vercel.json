@@ -17,6 +17,19 @@
                 {
                     "key": "X-Content-Type-Options",
                     "value": "nosniff"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                }
+            ]
+        },
+        {
+            "source": "/sitemap.xml",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/xml"
                 }
             ]
         }
@@ -27,7 +40,15 @@
             "destination": "https://media.githubusercontent.com/media/Bhumit717/papergtu/main/papers/:path*"
         },
         {
-            "source": "/((?!papers|.*\\.).*)",
+            "source": "/sitemap.xml",
+            "destination": "/sitemap.xml"
+        },
+        {
+            "source": "/robots.txt",
+            "destination": "/robots.txt"
+        },
+        {
+            "source": "/((?!papers|sitemap\\.xml|robots\\.txt|favicon.*|android-.*|apple-touch-.*|site\\.webmanifest|.*\\..*).*)",
             "destination": "/index.html"
         }
     ]
