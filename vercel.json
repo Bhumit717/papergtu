@@ -2,6 +2,21 @@
     "buildCommand": "cd gtu-papers-app && npm install && npm run build",
     "outputDirectory": "gtu-papers-app/dist",
     "framework": "vite",
+    "headers": [
+        {
+            "source": "/papers/:path*",
+            "headers": [
+                {
+                    "key": "Content-Disposition",
+                    "value": "inline"
+                },
+                {
+                    "key": "Content-Type",
+                    "value": "application/pdf"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
             "source": "/papers/:path*",
