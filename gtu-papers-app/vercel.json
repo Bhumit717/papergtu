@@ -24,7 +24,23 @@
             "destination": "https://media.githubusercontent.com/media/Bhumit717/papergtu/main/papers/:path*"
         },
         {
-            "source": "/(.*)",
+            "source": "/sitemap.xml",
+            "destination": "/sitemap.xml"
+        },
+        {
+            "source": "/robots.txt",
+            "destination": "/robots.txt"
+        },
+        {
+            "source": "/favicon.ico",
+            "destination": "/favicon.ico"
+        },
+        {
+            "source": "/site.webmanifest",
+            "destination": "/site.webmanifest"
+        },
+        {
+            "source": "/((?!papers|sitemap\\.xml|robots\\.txt|favicon\\.ico|site\\.webmanifest|.*\\.).*)",
             "destination": "/index.html"
         }
     ]
