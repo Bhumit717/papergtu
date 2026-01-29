@@ -203,13 +203,13 @@ function SubjectView({ metadata }) {
   const handleView = (paper) => {
     // Construct the GitHub raw URL directly using the relative path structure
     // paper.localPath is something like "01/1/3110001/Summer_2025.pdf"
-    // We need: https://github.com/Bhumit717/papergtu/blob/main/papers/01/1/3110001/Summer_2025.pdf
+    // We need: /papers/01/1/3110001/Summer_2025.pdf (which proxies to GitHub raw)
 
     let path = paper.localPath;
     if (path) {
       // Ensure path uses forward slashes
       path = path.replace(/\\/g, '/');
-      const pdfUrl = `https://github.com/Bhumit717/papergtu/blob/main/papers/${path}`;
+      const pdfUrl = `/papers/${path}`;
       window.open(pdfUrl, '_blank');
     } else if (paper.downloadUrl) {
       window.open(paper.downloadUrl, '_blank');
