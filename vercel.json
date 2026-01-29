@@ -7,12 +7,12 @@
             "source": "/papers/:path*",
             "headers": [
                 {
-                    "key": "Content-Disposition",
-                    "value": "inline"
-                },
-                {
                     "key": "Content-Type",
                     "value": "application/pdf"
+                },
+                {
+                    "key": "Content-Disposition",
+                    "value": "inline"
                 },
                 {
                     "key": "X-Content-Type-Options",
@@ -24,7 +24,7 @@
     "rewrites": [
         {
             "source": "/papers/:path*",
-            "destination": "https://raw.githubusercontent.com/Bhumit717/papergtu/main/papers/:path*"
+            "destination": "https://media.githubusercontent.com/media/Bhumit717/papergtu/main/papers/:path*"
         },
         {
             "source": "/(.*)",
