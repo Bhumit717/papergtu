@@ -13,6 +13,10 @@
                 {
                     "key": "Content-Type",
                     "value": "application/pdf"
+                },
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
                 }
             ]
         }
@@ -20,7 +24,7 @@
     "rewrites": [
         {
             "source": "/papers/:path*",
-            "destination": "https://github.com/Bhumit717/papergtu/raw/main/papers/:path*"
+            "destination": "https://raw.githubusercontent.com/Bhumit717/papergtu/main/papers/:path*"
         },
         {
             "source": "/(.*)",
