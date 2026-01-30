@@ -4,18 +4,68 @@ import './App.css';
 
 // --- SEO Hook ---
 function useSEO({ title, description }) {
-  useEffect(() => {
-    if (title) {
-      document.title = `${title} | GTU Papers Archive`;
-    }
+  const location = useLocation();
+  const canonicalUrl = `https://papergtu.vercel.app${location.pathname}`;
+  const fullTitle = title ? `${title} | GTU Papers Archive` : 'GTU Papers Archive | Download Previous Year Question Papers (BE)';
+  const defaultDescription = 'Access and download GTU (Gujarat Technological University) Bachelor of Engineering (BE) previous year question papers for all branches and semesters. Completely free and organized.';
+  const finalDescription = description || defaultDescription;
 
-    if (description) {
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', description);
-      }
+  useEffect(() => {
+    // Update Title
+    document.title = fullTitle;
+
+    // Update Meta Description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
     }
-  }, [title, description]);
+    metaDescription.setAttribute('content', finalDescription);
+
+    // Update Canonical URL
+    let linkCanonical = document.querySelector('link[rel="canonical"]');
+    if (!linkCanonical) {
+      linkCanonical = document.createElement('link');
+      linkCanonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(linkCanonical);
+    }
+    linkCanonical.setAttribute('href', canonicalUrl);
+
+    // Update Open Graph Tags
+    const ogTags = {
+      'og:title': fullTitle,
+      'og:description': finalDescription,
+      'og:url': canonicalUrl,
+    };
+
+    Object.entries(ogTags).forEach(([property, content]) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    });
+
+    // Update Twitter Tags
+    const twitterTags = {
+      'twitter:title': fullTitle,
+      'twitter:description': finalDescription,
+      'twitter:url': canonicalUrl,
+    };
+
+    Object.entries(twitterTags).forEach(([name, content]) => {
+      let meta = document.querySelector(`meta[property="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    });
+  }, [fullTitle, finalDescription, canonicalUrl]);
 }
 
 function App() {
